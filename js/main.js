@@ -131,17 +131,17 @@ function changeActive(event){
 	let title = event.target.closest("."+styles.locationName);
 	console.log(title);
 	console.log(title.innerText);
-	if(title.innerText==='Gondor'){
+	if(title.innerText==='Gondor'||title.innerText==='Gondor↵'){
 		i=0;
 		active(i);
-	}else if(title.innerText=='Rohan'){
+	}else if(title.innerText=='Rohan'||title.innerText=='Rohan↵'){
 		i=1;
 		active(i);
-	}else if(title.innerText=='Mordor'){
+	}else if(title.innerText=='Mordor'||title.innerText=='Mordor↵'){
 		i=2;
 		active(i);
 
-	}else if(title.innerText=='Isengard'){
+	}else if(title.innerText=='Isengard'||title.innerText=='Isengard↵'){
 		i=3;
 		active(i);
 		selectors.infoitems[i].classList.add(styles.locationInfoActive);
