@@ -47,7 +47,7 @@ body{
 }
 
 .nav{
-	margin:20px  5px 0 15px;
+	margin:50px  5px 0 15px;
 	text-align: center;
 	grid-area:n;	
 }
@@ -62,7 +62,7 @@ body{
 }
 
 .info{
-	margin: 30px;
+	margin: 50px;
 	text-align: justify;
 	grid-area:i;
 }
@@ -76,9 +76,10 @@ body{
 }
 
 .img{
-	margin-left:20px; 
+	margin-left:15px; 
 	float:right;
-	max-width:120px;
+	max-width:300px;
+	grid-area: i;
 }
 
 .emblem{
@@ -87,9 +88,20 @@ body{
 
 @media screen and (max-width: 600px){
 	.menu{
-	grid-template-areas: 
-						"h h h h"
-						"n n n n"
+		grid-template-areas: 
+					"h h h h"
+					"n n n n"
 		        		"i i i i";
   }
 }
+@media screen and (max-width: 540px){
+  .img{
+		max-width:200px;
+	}
+}
+@media screen and (max-width: 399px){
+  .img{
+		max-width:150px;
+	}
+}
+
