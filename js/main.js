@@ -126,22 +126,22 @@ function change(t){
 	console.log(t);
 }
 
+
 function changeActive(event){
 	console.log(event);
 	let title = event.target.closest("."+styles.locationName);
 	console.log(title);
-	console.log(title.innerText);
-	if(title.innerText==='Gondor'||title.innerText==='Gondor↵'){
+	console.log(title.innerHTML);
+	if(title.innerHTML=="<h2>Gondor</h2>"){
 		i=0;
 		active(i);
-	}else if(title.innerText=='Rohan'||title.innerText=='Rohan↵'){
+	}else if(title.innerHTML=="<h2>Rohan</h2>"){
 		i=1;
 		active(i);
-	}else if(title.innerText=='Mordor'||title.innerText=='Mordor↵'){
+	}else if(title.innerHTML=="<h2>Mordor</h2>"){
 		i=2;
 		active(i);
-
-	}else if(title.innerText=='Isengard'||title.innerText=='Isengard↵'){
+	}else if(title.innerHTML=="<h2>Isengard</h2>"){
 		i=3;
 		active(i);
 		selectors.infoitems[i].classList.add(styles.locationInfoActive);
