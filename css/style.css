@@ -45,11 +45,16 @@ body {
 .nav-item {
     margin: 5px 0 25px;
     padding: 5px;
-    border: solid 1.5px;
+    border: solid 1px;
     cursor: pointer;
 }
-.nav-item_active {
+.nav-item:hover{
+    border-color:#ec4e4e;
+}
+.nav-item_active,.nav-item_active:hover {
+    background-color: #ec4e4e;
     color: #ec4e4e;
+    border-color: #000;
 }
 .info {
     margin: 50px;
