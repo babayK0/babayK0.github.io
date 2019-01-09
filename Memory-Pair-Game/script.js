@@ -5,6 +5,15 @@ let openedCards = [];
 let openedFront = [];
 const BODY = document.querySelector("body");
 
+function addBlockOfClick(){
+    BODY.style.pointerEvents = 'none';
+}
+function removeBlockOfClick(i) {
+    setTimeout(() => {
+        BODY.style.pointerEvents = 'auto';
+    }, TIME * i);
+}
+
 function startGame() {
     const GAME_CONTAINER = document.createElement("div");
     GAME_CONTAINER.classList.add("game-container");
@@ -16,7 +25,7 @@ function startGame() {
             FRONT_FACE.classList.add("front-face");
             FRONT_FACE.src = cardSrc;
             FRONT_FACE.setAttribute("id", 'front' + (i + 1));
-            
+
             const BACK_FACE = document.createElement("img");
             BACK_FACE.classList.add("back-face");
             BACK_FACE.src = BACK_FACE_SRC;
@@ -50,6 +59,8 @@ function startGame() {
                 let [firstCard, secondCard] = [openedFront[0], openedFront[1]];
                 setTimeout(() => {
                     if (firstCard.src === secondCard.src && firstCard.id !== secondCard.id) {
+                        addBlockOfClick();
+                        removeBlockOfClick(1);
                         openedCards.forEach(element => {
                             element.classList.toggle("block");
                             if (document.getElementsByClassName("block").length === IMAGES.length * 2) {
@@ -65,6 +76,7 @@ function startGame() {
                     openedFront = [];
                 }, TIME);
             }
+            BODY.style.pointerEvents = 'auto';
         });
     }
 
@@ -88,9 +100,8 @@ function startGame() {
     flipAll();
     BODY.append(GAME_CONTAINER);
 
-    setTimeout(() => {
-        BODY.style.pointerEvents = 'auto';
-    }, TIME * 5);
+    removeBlockOfClick(4);
 }
-BODY.style.pointerEvents = 'none';
+
+addBlockOfClick();
 startGame();
