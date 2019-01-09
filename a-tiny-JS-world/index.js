@@ -19,21 +19,27 @@ class Organism{
       this.legs=legs;
       this.hands=hands;
    }
-   get info(){
+get info(){
       return `I am ${this.species}-${this.gender}.My name is <strong>${this.name} </strong>.`
-         +(this.hands=='0' ? `I have not hands but have ${this.legs} legs!`:`I have ${this.hands} hands and ${this.legs} legs!`)
          +(this.friends==null ? '...oh, i haven\'t friends:(':`My friends are ${this.friends}.`)
-         +`My favorite phrase is: <strong>${this.saying}</strong>`;
+         
    }
 }
 class Human extends Organism{
    constructor(gender,name,saying,friends,species='human',legs='2',hands='2'){
       super(gender,name,saying,friends,species,legs,hands);
    }
+   get info(){
+      return super.info+`I have ${this.hands} hands and ${this.legs} legs! My favorite phrase is: <strong>${this.saying}</strong>`;
+   }
 }
 class Animal extends Organism{
    constructor(gender,name,saying,friends,species,legs='4',hands){
       super(gender,name,saying,friends,species,legs,hands);
+   }
+   get info(){
+      return super.info+(this.hands=='0' ? `I have not hands but have ${this.legs} legs!`:`I have ${this.hands} hands and ${this.legs} legs!`)
+      +`As you can say my favorite phrase is: ${this.saying}`;
    }
 }
 class Dog extends Animal{
@@ -84,5 +90,4 @@ print(catwoman.info);
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny');
    print('human; <strong>John</strong>; male; 2; 2; <em>Hello world!</em>; Rex, Tom, Jenny', 'div');
    */
-
 
