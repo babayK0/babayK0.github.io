@@ -50,7 +50,7 @@ function startGame() {
             let card = document.getElementById("card" + (target.id));
             let front = document.getElementById("front" + (target.id))
             if (clicked.classList.value === "back-face" && openedCards.length < 2) {
-                flip(card);
+                card.classList.toggle("flip")
                 openedCards.push(card);
                 if (openedFront.length < 2) {
                     openedFront.push(front);
@@ -58,10 +58,10 @@ function startGame() {
             }
             if (openedFront.length === 2) {
                 let [firstCard, secondCard] = openedFront;
-                let checkSame = (firstCard.src === secondCard.src);
-                let checkNotSame = (firstCard.id !== secondCard.id);
+                let isSameCards = (firstCard.src === secondCard.src);
+                let isNotSameCards = (firstCard.id !== secondCard.id);
                 setTimeout(() => {
-                    if (checkSame && checkNotSame) {
+                    if (isSameCards && isNotSameCards) {
                         addBlockOfClick();
                         removeBlockOfClick(1);
                         openedCards.forEach(element => {
@@ -73,7 +73,7 @@ function startGame() {
                             }
                         });
                     } else {
-                        openedCards.forEach(element => flip(element));
+                        openedCards.forEach(element => element.classList.toggle("flip"));
                     }
                     openedCards = [];
                     openedFront = [];
@@ -82,17 +82,11 @@ function startGame() {
             BODY.style.pointerEvents = 'auto';
         });
     }
-    function flip(element){
-        element.classList.toggle("flip");
-    }
     function flipAll() {
         const allCards = GAME_CONTAINER.querySelectorAll(".card");
         allCards.forEach(element => {
-            function flip(){
-                element.classList.toggle("flip");
-            }
-            setTimeout(flip,TIME);
-            setTimeout(flip,TIME * 4);
+            setTimeout(()=>{element.classList.toggle("flip")},TIME);
+            setTimeout(()=>{element.classList.toggle("flip")},TIME * 4);
         });
     }
 
